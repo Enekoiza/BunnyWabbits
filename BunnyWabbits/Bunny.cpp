@@ -1,6 +1,18 @@
 #include "Bunny.h"
 
-Bunny::Bunny(int age)
+
+
+
+void Bunny::printBunny()
+{
+	cout << "--------------" << endl;
+	cout << "Name: " << *name << endl;
+	cout << "Colour: " << *colour << endl;
+	cout << "Age: " << *age << endl;
+	cout << "Sex: " << *sex << endl;
+}
+
+void Bunny::generateBunnyValues(int age)
 {
 	this->age = &age;
 	srand(time(NULL));
@@ -11,25 +23,4 @@ Bunny::Bunny(int age)
 	this->name = &allNames[randomName];
 	this->sex = &allSexs[randomSex];
 
-
-}
-
-Bunny::~Bunny()
-{
-	if (name != NULL)
-	{
-		delete this->name;
-	}
-	if (colour != NULL)
-	{
-		delete this->colour;
-	}
-	if (age != NULL)
-	{
-		delete this->age;
-	}
-	if (sex != NULL)
-	{
-		delete this->sex;
-	}
 }

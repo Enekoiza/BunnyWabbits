@@ -28,10 +28,11 @@ private:
 
 public:
 	Bunny() {};
-	Bunny(int age);
-	~Bunny();
+	~Bunny() {};
 
 
+	void printBunny();
+	void generateBunnyValues(int age = 0);
 
 };
 
