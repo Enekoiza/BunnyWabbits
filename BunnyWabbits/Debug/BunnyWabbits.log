@@ -1,0 +1,5 @@
+﻿  Bunny.cpp
+C:\Users\enekoiza\source\repos\BunnyWabbits\BunnyWabbits\Bunny.cpp(6,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  main.cpp
+  Generating Code...
+  BunnyWabbits.vcxproj -> C:\Users\enekoiza\source\repos\BunnyWabbits\Debug\BunnyWabbits.exe
