@@ -1,6 +1,8 @@
 #include "Bunny.h"
 #include "ListItem.h"
 #include "windows.h"
+#include "List.h"
+#include "Simulation.h"
 
 
 
@@ -8,16 +10,9 @@
 
 int main()
 {
+	Simulation s1;
 
-	ListItem *l1 = new ListItem(5);
-	Sleep(1000);
-	ListItem *l2 = new ListItem(0);
-
-	cout << "ok";
-
-
-
-
+	s1.Simulate();
 
 	return 0;
 }

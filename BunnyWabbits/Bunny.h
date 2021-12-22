@@ -17,6 +17,7 @@ using std::endl;
 class Bunny
 {
 private:
+	int *ID = new int;
 	string* colour = new string;
 	string* name = new string;
 	int* age = new int;
@@ -30,9 +31,12 @@ public:
 	Bunny() {};
 	~Bunny() {};
 
-
+	void growUp();
 	void printBunny();
-	void generateBunnyValues(int age = 0);
+	void generateBunnyValues(int age, int ID);
+	int* checkAge();
+	int* getID();
+	void setID(int ID);
 
 };
 

@@ -3,6 +3,26 @@
 
 
 
+void Bunny::growUp()
+{
+	(*age)++;
+}
+
+int* Bunny::checkAge()
+{
+	return age;
+}
+
+int* Bunny::getID()
+{
+	return ID;
+}
+
+void Bunny::setID(int IDs)
+{
+	*ID = IDs;
+}
+
 void Bunny::printBunny()
 {
 	cout << "--------------" << endl;
@@ -12,10 +32,10 @@ void Bunny::printBunny()
 	cout << "Sex: " << *sex << endl;
 }
 
-void Bunny::generateBunnyValues(int age)
+void Bunny::generateBunnyValues(int ages, int IDs)
 {
-	this->age = &age;
-	srand(time(NULL));
+	*ID = IDs;
+	*age = ages;
 	int randomColour = rand() % 4;
 	int randomName = rand() % 10;
 	int randomSex = rand() % 2;
@@ -24,3 +44,4 @@ void Bunny::generateBunnyValues(int age)
 	this->sex = &allSexs[randomSex];
 
 }
+
