@@ -3,34 +3,25 @@
 
 void Simulation::Simulate()
 {
+	vector<int> oldBunnies;
+
 	colony->createColony();
-	for (int x = 0; x < 11; x++)
+	while (true)
 	{
+		cout << "--------------------NEXT ROUND--------------------" << endl;
+		colony->countMaleFemale();
+		colony->reproduce();
 		colony->printColony();
-		this->nextYear();
-		this->killOld();
-		Sleep(50);
+		colony->nextYear();
+		//Sleep(1000);
+		colony->killOld(colony->checkOld());
+		if (colony->countTotalItems() > 50)
+		{
+			colony->foodShortage(colony->countTotalItems(), (colony->countTotalItems()/2));
+		}
+		cout << "--------------------END ROUND--------------------" << colony->countTotalItems() << endl;
+		//Sleep(2000);
 	}
-
-	colony->printColony();
 }
 
-void Simulation::nextYear()
-{
-	ListItem* current = colony->getHead();
 
-	while (current != NULL)
-	{
-		current->getBunny()->growUp();
-		current = current->getNext();
-	}
-
-
-}
-
-void Simulation::killOld()
-{
-	
-
-
-}

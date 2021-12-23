@@ -8,6 +8,11 @@ void Bunny::growUp()
 	(*age)++;
 }
 
+string* Bunny::getSex()
+{
+	return sex;
+}
+
 int* Bunny::checkAge()
 {
 	return age;

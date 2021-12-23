@@ -9,17 +9,31 @@ class List
 {
 private:
 	ListItem* head;
-
-
+	int* bunnyID = new int;
+	vector<int> oldBunnies;
+	int* maleBunnies = new int;
+	int* femaleBunnies = new int;
+	int* totalBunnies = new int;
+	vector<int> randomBunnies;
 
 public:
-	List() { head = NULL; };
+	List();
 
 	void printColony();
 	void createColony();
 	void insertBunny(int age, int ID);
 	ListItem* getHead();
 	bool killBunny(int ID);
+	vector<int> checkOld();
+	void nextYear();
+	void countMaleFemale();
+	int getMales();
+	int getFemales();
+	int getNextBunnyID();
+	void reproduce();
+	int countTotalItems();
+	void foodShortage(int total, int half);
+	void killOld(vector<int> oldBunnies);
 };
 
 

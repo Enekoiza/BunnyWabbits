@@ -37,6 +37,7 @@ public:
 	int* checkAge();
 	int* getID();
 	void setID(int ID);
+	string* getSex();
 
 };
 
