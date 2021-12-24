@@ -1,5 +1,6 @@
 #include "List.h"
 #include "windows.h"
+#include <algorithm>
 
 
 
@@ -8,6 +9,22 @@ List::List()
 	head = NULL;
 	*bunnyID = 0;
 
+}
+
+List::~List()
+{
+	if (bunnyID != NULL)
+	{
+		delete bunnyID;
+	}
+	if (maleBunnies != NULL)
+	{
+		delete maleBunnies;
+	}
+	if (femaleBunnies != NULL)
+	{
+		delete femaleBunnies;
+	}
 }
 
 void List::printColony()
@@ -56,6 +73,10 @@ bool List::killBunny(int ID)
 		if (ID == *(current->getBunny()->getID()))
 		{
 			previous->setNext(current->getNext());
+			if (current == head)
+			{
+				head = current->getNext();
+			}
 			delete current;
 			return true;
 		}
@@ -148,35 +169,44 @@ void List::reproduce()
 
 int List::countTotalItems()
 {
-	*totalBunnies = 0;
+	int totalBunnies = 0;
 	ListItem* current = head;
 
 	while (current != NULL)
 	{
 		current = current->getNext();
-		(*totalBunnies)++;
+		totalBunnies++;
 	}
 
-	return *totalBunnies;
+	return totalBunnies;
 }
 
-void List::foodShortage(int total, int halfTotal)
+void List::foodShortage()
 {
-	ListItem* current = head;
-	
+	int total = countTotalItems();
+
+	int halfTotal = total / 2;
 
 	while (total > halfTotal)
 	{
+		ListItem* current = head;
 		while (current != NULL)
 		{
 			int randomKill = rand() % 2;
 
 			if (randomKill == 1)
 			{
-				randomBunnies.push_back(*current->getBunny()->getID());
+				if (std::find(randomBunnies.begin(), randomBunnies.end(), *current->getBunny()->getID()) != randomBunnies.end())
+				{
+					break;
+				}
+				else
+				{
+					randomBunnies.push_back(*current->getBunny()->getID());
+				}
 			}
 
-			if ((randomBunnies.size() > halfTotal) && (total < 51))
+			if ((randomBunnies.size() > halfTotal) && (total < 16))
 			{
 				return;
 			}
@@ -184,23 +214,14 @@ void List::foodShortage(int total, int halfTotal)
 			current = current->getNext();
 		}
 
+		total = total - randomBunnies.size();
+
 		while (!randomBunnies.empty())
 		{
 			killBunny(randomBunnies.back());
 			randomBunnies.pop_back();
 		}
 
-		total = countTotalItems();
-
-		if (total > halfTotal)
-		{
-			foodShortage(countTotalItems(), halfTotal);
-		}
-
-		if (total > 50)
-		{
-			foodShortage(countTotalItems(), (countTotalItems() / 2));
-		}
 	}
 
 }

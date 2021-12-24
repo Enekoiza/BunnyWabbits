@@ -13,11 +13,11 @@ private:
 	vector<int> oldBunnies;
 	int* maleBunnies = new int;
 	int* femaleBunnies = new int;
-	int* totalBunnies = new int;
 	vector<int> randomBunnies;
 
 public:
 	List();
+	~List();
 
 	void printColony();
 	void createColony();
@@ -32,7 +32,7 @@ public:
 	int getNextBunnyID();
 	void reproduce();
 	int countTotalItems();
-	void foodShortage(int total, int half);
+	void foodShortage();
 	void killOld(vector<int> oldBunnies);
 };
 

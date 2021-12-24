@@ -15,9 +15,9 @@ void Simulation::Simulate()
 		colony->nextYear();
 		//Sleep(1000);
 		colony->killOld(colony->checkOld());
-		if (colony->countTotalItems() > 50)
+		if (colony->countTotalItems() > 15)
 		{
-			colony->foodShortage(colony->countTotalItems(), (colony->countTotalItems()/2));
+			colony->foodShortage();
 		}
 		cout << "--------------------END ROUND--------------------" << colony->countTotalItems() << endl;
 		//Sleep(2000);
