@@ -3,7 +3,7 @@
 #include <algorithm>
 
 
-//Constructor
+//Constructor that creates the pointers and set the bunnyID to 0
 List::List()
 {
 	bunnyID = new int;
@@ -70,12 +70,6 @@ void List::insertBunny(int age, int ID)
 	head = bunny;
 	
 	return;
-}
-
-//In some cases we need the head from outside of the current list
-ListItem* List::getHead()
-{
-	return head;
 }
 
 //With the ID of the bunny we compare it to every bunny inside the list and if found, delete it and concatenate the list to not lose the track
@@ -206,7 +200,7 @@ int List::countTotalItems()
 	return totalBunnies;
 }
 
-//
+//A function to kill bunnies in case that the population excees 50.
 void List::foodShortage()
 {
 	int total = countTotalItems();
@@ -252,19 +246,18 @@ void List::foodShortage()
 
 }
 
-//
+//A function which receives the oldBunnies vector and kills all the bunnies inside it
 void List::killOld(vector<int> oldBunnies)
 {
-	if (!oldBunnies.empty())
+
+	while (!oldBunnies.empty())
 	{
-		while (!oldBunnies.empty())
+		killBunny(oldBunnies.back());
+		oldBunnies.pop_back();
+		if (oldBunnies.empty())
 		{
-			killBunny(oldBunnies.back());
-			oldBunnies.pop_back();
-			if (oldBunnies.empty())
-			{
-				return;
-			}
+			return;
 		}
 	}
+
 }
