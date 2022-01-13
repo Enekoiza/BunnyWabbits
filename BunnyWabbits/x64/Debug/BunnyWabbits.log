@@ -1,7 +1,5 @@
-﻿  Bunny.cpp
-  List.cpp
-C:\Users\Eneko\source\repos\BunnyWabbits\BunnyWabbits\List.cpp(217,39): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-  ListItem.cpp
+﻿  List.cpp
+C:\Users\Eneko\source\repos\BunnyWabbits\BunnyWabbits\List.cpp(243,39): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
   Simulation.cpp
   main.cpp
   Generating Code...

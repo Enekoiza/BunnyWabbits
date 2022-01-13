@@ -1,6 +1,19 @@
 #include "Simulation.h"
 #include <windows.h>
 
+Simulation::Simulation()
+{
+	colony = new List;
+}
+
+Simulation::~Simulation()
+{
+	if (colony != NULL)
+	{
+		delete colony;
+	}
+}
+
 void Simulation::Simulate()
 {
 	vector<int> oldBunnies;
@@ -13,14 +26,14 @@ void Simulation::Simulate()
 		colony->reproduce();
 		colony->printColony();
 		colony->nextYear();
-		//Sleep(1000);
+		Sleep(1000);
 		colony->killOld(colony->checkOld());
-		if (colony->countTotalItems() > 15)
+		if (colony->countTotalItems() > 50)
 		{
 			colony->foodShortage();
 		}
 		cout << "--------------------END ROUND--------------------" << colony->countTotalItems() << endl;
-		//Sleep(2000);
+		Sleep(2000);
 	}
 }
 

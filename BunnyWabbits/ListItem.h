@@ -7,7 +7,7 @@
 class ListItem
 {
 private:
-	Bunny *b1 = new Bunny;
+	Bunny* b1 = NULL;
 	ListItem *next = NULL;
 
 public:

@@ -17,11 +17,11 @@ using std::endl;
 class Bunny
 {
 private:
-	int *ID = new int;
-	string* colour = new string;
-	string* name = new string;
-	int* age = new int;
-	string* sex = new string;
+	int *ID = NULL;
+	string* colour = NULL;
+	string* name = NULL;
+	int* age = NULL;
+	string* sex = NULL;
 	vector<string> allNames = { "Thor", "Capt. America", "Ironman", "Black Widow", "Spiderman", "Superman", "Ant Man", "Batman", "Flash", "Aquaman" };
 	vector<string> allSexs = { "Male", "Female" };
 	vector<string> allColours = { "White", "Brown", "Black", "Spotted"};
@@ -29,11 +29,11 @@ private:
 
 public:
 	Bunny() {};
-	~Bunny() {};
+	Bunny(int ages, int IDs);
+	~Bunny();
 
 	void growUp();
 	void printBunny();
-	void generateBunnyValues(int age, int ID);
 	int* checkAge();
 	int* getID();
 	void setID(int ID);

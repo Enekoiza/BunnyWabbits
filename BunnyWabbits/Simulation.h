@@ -5,8 +5,12 @@
 class Simulation
 {
 private:
-	List* colony = new List;
+	List* colony;
 public:
+	Simulation();
+	
+	~Simulation();
+
 	void Simulate();
 
 };

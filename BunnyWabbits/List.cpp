@@ -3,14 +3,19 @@
 #include <algorithm>
 
 
-
+//Constructor
 List::List()
 {
+	bunnyID = new int;
+	maleBunnies = new int;
+	femaleBunnies = new int;
+	head = new ListItem(NULL, NULL, NULL);
 	head = NULL;
 	*bunnyID = 0;
 
 }
 
+//Destructor
 List::~List()
 {
 	if (bunnyID != NULL)
@@ -25,8 +30,14 @@ List::~List()
 	{
 		delete femaleBunnies;
 	}
+	if (head != NULL)
+	{
+		delete head;
+	}
+
 }
 
+//Prints the whole list of items, calling the bunny object and using its printBunny() function
 void List::printColony()
 {
 	ListItem* current = head;
@@ -39,6 +50,7 @@ void List::printColony()
 	}
 }
 
+//As defined we want 5 bunnies at the beggining with random data but with age = 0 and getting the next ID
 void List::createColony()
 {
 	for (int x = 0; x < 5; x++)
@@ -48,6 +60,8 @@ void List::createColony()
 
 }
 
+
+//Inserting bunny to the list by pointing the next of the new bunny to the Head and the head to the new bunny
 void List::insertBunny(int age, int ID)
 {
 	ListItem* bunny = new ListItem(age, ID, NULL);
@@ -58,11 +72,13 @@ void List::insertBunny(int age, int ID)
 	return;
 }
 
+//In some cases we need the head from outside of the current list
 ListItem* List::getHead()
 {
 	return head;
 }
 
+//With the ID of the bunny we compare it to every bunny inside the list and if found, delete it and concatenate the list to not lose the track
 bool List::killBunny(int ID)
 {
 	ListItem* current = head;
@@ -87,6 +103,7 @@ bool List::killBunny(int ID)
 	return false;
 }
 
+//The worksheets ask to kill every bunny that is 10 years old, so we move through the list and return a vector with the ID of all old bunnies to kill.
 vector<int> List::checkOld()
 {
 	ListItem* current = head;
@@ -103,6 +120,7 @@ vector<int> List::checkOld()
 	return oldBunnies;
 }
 
+//Every turn, the bunnies will grow up by 1 year, iterates through the list growing up every bunny
 void List::nextYear()
 {
 	ListItem* current = head;
@@ -116,6 +134,7 @@ void List::nextYear()
 
 }
 
+//A function to iterate through the list checking how many males and females are in it, adding them inside the pointer
 void List::countMaleFemale()
 {
 	ListItem* current = head;
@@ -139,21 +158,26 @@ void List::countMaleFemale()
 	}
 }
 
+//Returns a pointer to maleBunnies which stores the number of male bunnies in the list
 int List::getMales()
 {
 	return *maleBunnies;
 }
+
+//Returns a pointer to femaleBunnies which stores the number of female bunnies in the list
 
 int List::getFemales()
 {
 	return *femaleBunnies;
 }
 
+//A function that returns the next ID of the bunny list
 int List::getNextBunnyID()
 {
 	return ++(*bunnyID);
 }
 
+//A function that insert a number of bunnies equal to females times males. If one of both sexes becomes 0 return without adding anything
 void List::reproduce()
 {
 	int newBunnies = getMales() * getFemales();
@@ -167,6 +191,7 @@ void List::reproduce()
 	}
 }
 
+//A function that iterates through the list and counts how many items are inside the list
 int List::countTotalItems()
 {
 	int totalBunnies = 0;
@@ -181,6 +206,7 @@ int List::countTotalItems()
 	return totalBunnies;
 }
 
+//
 void List::foodShortage()
 {
 	int total = countTotalItems();
@@ -206,7 +232,7 @@ void List::foodShortage()
 				}
 			}
 
-			if ((randomBunnies.size() > halfTotal) && (total < 16))
+			if ((randomBunnies.size() > halfTotal) && (total < 51))
 			{
 				return;
 			}
@@ -226,6 +252,7 @@ void List::foodShortage()
 
 }
 
+//
 void List::killOld(vector<int> oldBunnies)
 {
 	if (!oldBunnies.empty())
@@ -234,7 +261,7 @@ void List::killOld(vector<int> oldBunnies)
 		{
 			killBunny(oldBunnies.back());
 			oldBunnies.pop_back();
-			if (oldBunnies.empty() && (countTotalItems() == 0))
+			if (oldBunnies.empty())
 			{
 				return;
 			}

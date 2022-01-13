@@ -9,10 +9,10 @@ class List
 {
 private:
 	ListItem* head;
-	int* bunnyID = new int;
+	int* bunnyID;
 	vector<int> oldBunnies;
-	int* maleBunnies = new int;
-	int* femaleBunnies = new int;
+	int* maleBunnies;
+	int* femaleBunnies;
 	vector<int> randomBunnies;
 
 public:

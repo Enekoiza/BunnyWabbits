@@ -2,7 +2,7 @@
 
 ListItem::ListItem(int age, int ID, ListItem *next)
 {
-	b1->generateBunnyValues(age, ID);
+	b1 = new Bunny(age, ID);
 	this->next = next;
 }
 
@@ -16,7 +16,6 @@ ListItem::~ListItem()
 
 ListItem* ListItem::getNext()
 {
-
 	return next;
 }
 
